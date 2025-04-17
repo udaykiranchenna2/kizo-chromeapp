@@ -1,0 +1,190 @@
+{
+  "chrome_extension_Name": {
+    "message": "KIZO | \u05e7\u05d9\u05d6\u05d5 - \u05e4\u05e9\u05d5\u05d8 \u05dc\u05e2\u05e9\u05d5\u05ea \u05d8\u05d5\u05d1",
+    "description": "Enter your extension name here"
+  },
+  "chrome_extension_description": {
+    "message": "\u05d4\u05ea\u05d5\u05e1\u05e3 \u05d4\u05d9\u05d9\u05d7\u05d5\u05d3\u05d9 \u05e9\u05d9\u05ea\u05df \u05dc\u05db\u05dd \u05de\u05d1\u05e6\u05e2\u05d9\u05dd \u05d5\u05d4\u05e0\u05d7\u05d5\u05ea, \u05d9\u05e9\u05d5\u05d5\u05d4 \u05e2\u05d1\u05d5\u05e8\u05db\u05dd \u05de\u05d7\u05d9\u05e8\u05d9\u05dd \u05d5\u05d9\u05e2\u05d6\u05d5\u05e8 \u05dc\u05db\u05dd \u05dc\u05ea\u05e8\u05d5\u05dd \u05d5\u05dc\u05e2\u05e9\u05d5\u05ea \u05d8\u05d5\u05d1 \u05d1\u05dc\u05d9 \u05dc\u05d4\u05d5\u05e6\u05d9\u05d0 \u05d0\u05e4\u05d9\u05dc\u05d5 \u05e9\u05e7\u05dc!",
+    "description": "A short Description of the extension here. Max 1 sentence or 2 short sentences"
+  },
+  "no_offers_found": {
+    "message": "Inga erbjudanden kunde hittas."
+  },
+  "more_offers": {
+    "message": "Fler erbjudanden fr\ufffdn"
+  },
+  "offers": {
+    "message": "Erbjudanden"
+  },
+  "products": {
+    "message": "Produkter"
+  },
+  "on": {
+    "message": "p\ufffd"
+  },
+  "login": {
+    "message": "Logga in"
+  },
+  "login_to_activate": {
+    "message": "Logga in f\ufffdr att aktivera cashback"
+  },
+  "cashback_activated": {
+    "message": "Cashback aktiverat, forts\ufffdtt att handla i detta f\ufffdnster."
+  },
+  "sign_in": {
+    "message": "Logga in"
+  },
+  "activate": {
+    "message": "Aktivera"
+  },
+  "see_details": {
+    "message": "Se detaljer"
+  },
+  "get_code": {
+    "message": "Visa kod!"
+  },
+  "get_deal": {
+    "message": "Visa erbjudande!"
+  },
+  "valid_till": {
+    "message": "Giltig t.o.m."
+  },
+  "verified_on": {
+    "message": "Verifierad den"
+  },
+  "loading": {
+    "message": "Laddar"
+  },
+  "transactions": {
+    "message": "Transaktioner"
+  },
+  "withdrawals": {
+    "message": "Uttag"
+  },
+  "profile": {
+    "message": "Profil"
+  },
+  "logout": {
+    "message": "Logga ut"
+  },
+  "close": {
+    "message": "St\ufffdng"
+  },
+  "settings": {
+    "message": "Inst\ufffdllningar"
+  },
+  "show_prices": {
+    "message": "Visa priser"
+  },
+  "buy": {
+    "message": "K\ufffdp"
+  },
+  "buy_now_for": {
+    "message": "K\ufffdp nu f\ufffdr [PRICE]"
+  },
+  "set_region": {
+    "message": "V\ufffdlj region"
+  },
+  "select_region": {
+    "message": "V\ufffdlj region"
+  },
+  "offers_message": {
+    "message": "Vi hittade $COUNT$ erbjudanden att anv\ufffdnda!",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "offers_subtext": {
+    "message": "Utforska v\ufffdra handplockade rabattkoder och erbjudande fr\ufffdn <strong>$STORE_NAME$</strong> och spara mer p\ufffd ditt n\ufffdsta k\ufffdp.",
+    "placeholders": {
+      "store_name": {
+        "content": "$1",
+        "example": "Amazon"
+      }
+    }
+  },
+  "buy_product": {
+    "message": "K\ufffdp $NAME$ f\ufffdr $PRICE$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Sony WH-1000XM4"
+      },
+      "price": {
+        "content": "$2",
+        "example": "$125"
+      }
+    }
+  },
+  "product_available": {
+    "message": "$NAME$ finns tillg\ufffdnglig f\ufffdr enbart $PRICE$ hos andra varum\ufffdrken.",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Sony WH-1000XM4"
+      },
+      "price": {
+        "content": "$2",
+        "example": "$125"
+      }
+    }
+  },
+  "product_cashback": {
+    "message": ".+ $CASHBACK$. Aktivera nu.",
+    "placeholders": {
+      "cashback": {
+        "content": "$1",
+        "example": "7% Cashback available"
+      }
+    }
+  },
+  "products_found": {
+    "message": "Vi hittade $COUNT$ produkterbjudanden f\ufffdr $NAME$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "6"
+      },
+      "name": {
+        "content": "$2",
+        "example": "Sony WH-1000XM4"
+      }
+    }
+  },
+  "product_explore": {
+    "message": "Samt utforska & j\ufffdmf\ufffdr priser fr\ufffdn andra"
+  },
+  "product_count": {
+    "message": "Topp $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "6"
+      }
+    }
+  },
+  "product_store": {
+    "message": "Produkter f\ufffdr <strong>$STORE$</strong>",
+    "placeholders": {
+      "store": {
+        "content": "$1",
+        "example": "Amazon"
+      }
+    }
+  },
+  "know_more": {
+    "message": "F\ufffdr mer information, klick p\ufffd <button type='button'><img src='$IMAGE$'></button> ikon i din webbl\ufffdsare.",
+    "placeholders": {
+      "image": {
+        "content": "$1",
+        "example": "Extension Icon"
+      }
+    }
+  },
+  "view_offer": {
+    "message": "Visa erbjudandedetaljer"
+  }
+}

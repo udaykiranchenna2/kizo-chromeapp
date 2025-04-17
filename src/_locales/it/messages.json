@@ -1,0 +1,190 @@
+{
+  "chrome_extension_Name": {
+    "message": "KIZO | \u05e7\u05d9\u05d6\u05d5 - \u05e4\u05e9\u05d5\u05d8 \u05dc\u05e2\u05e9\u05d5\u05ea \u05d8\u05d5\u05d1",
+    "description": "Enter your extension name here"
+  },
+  "chrome_extension_description": {
+    "message": "\u05d4\u05ea\u05d5\u05e1\u05e3 \u05d4\u05d9\u05d9\u05d7\u05d5\u05d3\u05d9 \u05e9\u05d9\u05ea\u05df \u05dc\u05db\u05dd \u05de\u05d1\u05e6\u05e2\u05d9\u05dd \u05d5\u05d4\u05e0\u05d7\u05d5\u05ea, \u05d9\u05e9\u05d5\u05d5\u05d4 \u05e2\u05d1\u05d5\u05e8\u05db\u05dd \u05de\u05d7\u05d9\u05e8\u05d9\u05dd \u05d5\u05d9\u05e2\u05d6\u05d5\u05e8 \u05dc\u05db\u05dd \u05dc\u05ea\u05e8\u05d5\u05dd \u05d5\u05dc\u05e2\u05e9\u05d5\u05ea \u05d8\u05d5\u05d1 \u05d1\u05dc\u05d9 \u05dc\u05d4\u05d5\u05e6\u05d9\u05d0 \u05d0\u05e4\u05d9\u05dc\u05d5 \u05e9\u05e7\u05dc!",
+    "description": "A short Description of the extension here. Max 1 sentence or 2 short sentences"
+  },
+  "no_offers_found": {
+    "message": "Nessuna offerta trovata."
+  },
+  "more_offers": {
+    "message": "Altre offerte da"
+  },
+  "offers": {
+    "message": "Offerte"
+  },
+  "products": {
+    "message": "Prodotti"
+  },
+  "on": {
+    "message": "su"
+  },
+  "login": {
+    "message": "Accedi"
+  },
+  "login_to_activate": {
+    "message": "Accedi per attivare il cashback"
+  },
+  "cashback_activated": {
+    "message": "Cashback attivato, si prega di continuare lo shopping in questa finestra."
+  },
+  "sign_in": {
+    "message": "Accedere"
+  },
+  "activate": {
+    "message": "Attivare"
+  },
+  "see_details": {
+    "message": "Vedi dettagli"
+  },
+  "get_code": {
+    "message": "Ottieni il codice!"
+  },
+  "get_deal": {
+    "message": "Ottieni l'offerta!"
+  },
+  "valid_till": {
+    "message": "Valido fino a"
+  },
+  "verified_on": {
+    "message": "Verificato il"
+  },
+  "loading": {
+    "message": "Caricamento"
+  },
+  "transactions": {
+    "message": "Operazioni"
+  },
+  "withdrawals": {
+    "message": "Prelievi"
+  },
+  "profile": {
+    "message": "Profilo"
+  },
+  "logout": {
+    "message": "Chiudi"
+  },
+  "close": {
+    "message": "Chiudi"
+  },
+  "settings": {
+    "message": "Impostazioni"
+  },
+  "show_prices": {
+    "message": "Mostra i prezzi"
+  },
+  "buy": {
+    "message": "Compra"
+  },
+  "buy_now_for": {
+    "message": "Acquista ora per [PRICE]"
+  },
+  "set_region": {
+    "message": "Imposta regione"
+  },
+  "select_region": {
+    "message": "Seleziona la regione"
+  },
+  "offers_message": {
+    "message": "Trovato $COUNT$ Offerte da usare!",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "offers_subtext": {
+    "message": "Esplora i nostri coupon e le nostre offerte per <strong>$STORE_NAME$</strong> e risparmia sul tuo prossimo acquisto.",
+    "placeholders": {
+      "store_name": {
+        "content": "$1",
+        "example": "Amazon"
+      }
+    }
+  },
+  "buy_product": {
+    "message": "Compra $NAME$ per $PRICE$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Sony WH-1000XM4"
+      },
+      "price": {
+        "content": "$2",
+        "example": "$125"
+      }
+    }
+  },
+  "product_available": {
+    "message": "$NAME$ \u00e8 disponibile per $PRICE$ in un altro negozio.",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Sony WH-1000XM4"
+      },
+      "price": {
+        "content": "$2",
+        "example": "$125"
+      }
+    }
+  },
+  "product_cashback": {
+    "message": "+ $CASHBACK$. Attiva ora.",
+    "placeholders": {
+      "cashback": {
+        "content": "$1",
+        "example": "7% Cashback available"
+      }
+    }
+  },
+  "products_found": {
+    "message": "Trovato $COUNT$ offerte di prodotti per $NAME$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "6"
+      },
+      "name": {
+        "content": "$2",
+        "example": "Sony WH-1000XM4"
+      }
+    }
+  },
+  "product_explore": {
+    "message": "Esplora e confronta anche i prezzi di altri"
+  },
+  "product_count": {
+    "message": "top $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "6"
+      }
+    }
+  },
+  "product_store": {
+    "message": "prodotti su <strong>$STORE$</strong>",
+    "placeholders": {
+      "store": {
+        "content": "$1",
+        "example": "Amazon"
+      }
+    }
+  },
+  "know_more": {
+    "message": "Per saperne di pi\u00f9, premi <button type='button'><img src='$IMAGE$'></button> nel tuo browser.",
+    "placeholders": {
+      "image": {
+        "content": "$1",
+        "example": "Extension Icon"
+      }
+    }
+  },
+  "view_offer": {
+    "message": "Visualizza i dettagli dell'offerta"
+  }
+}

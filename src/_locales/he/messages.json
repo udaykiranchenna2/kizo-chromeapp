@@ -1,0 +1,194 @@
+{
+  "chrome_extension_Name": {
+    "message": "KIZO | \u05e7\u05d9\u05d6\u05d5 - \u05e4\u05e9\u05d5\u05d8 \u05dc\u05e2\u05e9\u05d5\u05ea \u05d8\u05d5\u05d1",
+    "description": "Enter your extension name here"
+  },
+  "chrome_extension_description": {
+    "message": "\u05d4\u05ea\u05d5\u05e1\u05e3 \u05d4\u05d9\u05d9\u05d7\u05d5\u05d3\u05d9 \u05e9\u05d9\u05ea\u05df \u05dc\u05db\u05dd \u05de\u05d1\u05e6\u05e2\u05d9\u05dd \u05d5\u05d4\u05e0\u05d7\u05d5\u05ea, \u05d9\u05e9\u05d5\u05d5\u05d4 \u05e2\u05d1\u05d5\u05e8\u05db\u05dd \u05de\u05d7\u05d9\u05e8\u05d9\u05dd \u05d5\u05d9\u05e2\u05d6\u05d5\u05e8 \u05dc\u05db\u05dd \u05dc\u05ea\u05e8\u05d5\u05dd \u05d5\u05dc\u05e2\u05e9\u05d5\u05ea \u05d8\u05d5\u05d1 \u05d1\u05dc\u05d9 \u05dc\u05d4\u05d5\u05e6\u05d9\u05d0 \u05d0\u05e4\u05d9\u05dc\u05d5 \u05e9\u05e7\u05dc!",
+    "description": "A short Description of the extension here. Max 1 sentence or 2 short sentences"
+  },
+  "no_offers_found": {
+    "message": "לא נמצאו הצעות."
+  },
+  "more_offers": {
+    "message": "הצעות נוספות מ"
+  },
+  "offers": {
+    "message": "הצעות"
+  },
+  "products": {
+    "message": "מוצרים"
+  },
+  "on": {
+    "message": "עַל"
+  },
+  "login": {
+    "message": "התחברות"
+  },
+
+  "login_to_activate": {
+    "message": "התחבר כדי להפעיל קאשבק"
+  },
+  "login_to_activate2": {
+    "message": "התחברו כדי לתרום לעמותה שאתם רוצים ולעקוב אחר התרומות שלכם"
+  },
+  "cashback_activated": {
+    "message": "Cashback מופעל, אנא המשך לקנות בחלון זה."
+  },
+  "sign_in": {
+    "message": "להתחבר"
+  },
+  "activate": {
+    "message": "לְהַפְעִיל"
+  },
+  "see_details": {
+    "message": "ראה פרטים"
+  },
+  "get_code": {
+    "message": "קבל קוד!"
+  },
+  "get_deal": {
+    "message": "קבל דיל!"
+  },
+  "valid_till": {
+    "message": "בתוקף עד"
+  },
+  "verified_on": {
+    "message": "מאומת ב-"
+  },
+  "loading": {
+    "message": "טעינה"
+  },
+  "transactions": {
+    "message": "עסקאות"
+  },
+  "withdrawals": {
+    "message": "משיכות"
+  },
+  "profile": {
+    "message": "פּרוֹפִיל"
+  },
+  "logout": {
+    "message": "להתנתק"
+  },
+  "close": {
+    "message": "סגור"
+  },
+  "settings": {
+    "message": "הגדרות"
+  },
+  "show_prices": {
+    "message": "הצג מחירים"
+  },
+  "buy": {
+    "message": "לִקְנוֹת"
+  },
+  "buy_now_for": {
+    "message": "קנה עכשיו עבור [מחיר]"
+  },
+  "set_region": {
+    "message": "הגדר אזור"
+  },
+  "select_region": {
+    "message": "בחר אזור"
+  },
+  "offers_message": {
+    "message": "מצאתי {{ COUNT }} הצעות לשימוש!",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "offers_subtext": {
+    "message": "שלנו עבורוהמבצעים שנבחרו בידחקור את הקופונים  {{ STORE_NAME }} הבאה שלך.וחסוך גדול ברכישה ",
+    "placeholders": {
+      "store_name": {
+        "content": "$1",
+        "example": "Amazon"
+      }
+    }
+  },
+  "buy_product": {
+    "message": "Buy $NAME$ for $PRICE$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Sony WH-1000XM4"
+      },
+      "price": {
+        "content": "$2",
+        "example": "$125"
+      }
+    }
+  },
+  "product_available": {
+    "message": "$NAME$ is available for $PRICE$ at other store.",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Sony WH-1000XM4"
+      },
+      "price": {
+        "content": "$2",
+        "example": "$125"
+      }
+    }
+  },
+  "product_cashback": {
+    "message": "+ $CASHBACK$. Activate Now.",
+    "placeholders": {
+      "cashback": {
+        "content": "$1",
+        "example": "7% Cashback available"
+      }
+    }
+  },
+  "products_found": {
+    "message": "Found $COUNT$ product deals for $NAME$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "6"
+      },
+      "name": {
+        "content": "$2",
+        "example": "Sony WH-1000XM4"
+      }
+    }
+  },
+  "product_explore": {
+    "message": "Also explore & compare prices of other"
+  },
+  "product_count": {
+    "message": "top $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "6"
+      }
+    }
+  },
+  "product_store": {
+    "message": "products on <strong>$STORE$</strong>",
+    "placeholders": {
+      "store": {
+        "content": "$1",
+        "example": "Amazon"
+      }
+    }
+  },
+  "know_more": {
+    "message": "To know more, press <button type='button'><img src='$IMAGE$'></button> icon in your browser.",
+    "placeholders": {
+      "image": {
+        "content": "$1",
+        "example": "Extension Icon"
+      }
+    }
+  },
+  "view_offer": {
+    "message": "הצג את פרטי ההצעה"
+  }
+}

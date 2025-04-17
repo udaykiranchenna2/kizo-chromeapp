@@ -1,0 +1,48 @@
+{
+  "name": "kizo-app",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "vite build --watch --mode development",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.2.1",
+    "@fortawesome/free-brands-svg-icons": "^6.2.1",
+    "@fortawesome/free-regular-svg-icons": "^6.2.1",
+    "@fortawesome/free-solid-svg-icons": "^6.2.1",
+    "@fortawesome/vue-fontawesome": "^3.0.2",
+    "@intlify/vue-i18n-loader": "^5.0.0",
+    "@popperjs/core": "^2.11.6",
+    "apexcharts": "^3.36.3",
+    "axios": "^1.2.0",
+    "bootstrap": "^5.2.3",
+    "bootstrap-vue-3": "^0.4.10",
+    "feather-icons": "^4.29.0",
+    "i18next": "^22.4.9",
+    "i18next-vue": "^2.1.1",
+    "vite-plugin-static-copy": "^0.13.0",
+    "vue": "^3.2.45",
+    "vue-awesome-countdown": "^1.1.4",
+    "vue-draggable": "^2.0.6",
+    "vue3-apexcharts": "^1.4.1",
+    "vue3-clipboard": "^1.0.0",
+    "vue3-whr-ripple-directive": "^1.0.0"
+  },
+  "devDependencies": {
+    "@asigloo/prettier-config": "^0.2.0",
+    "@iconify/json": "^1.1.387",
+    "@vitejs/plugin-vue": "^2.3.0",
+    "@vue/compiler-sfc": "^3.0.5",
+    "autoprefixer": "^10.3.1",
+    "postcss": "^8.3.6",
+    "tailwindcss": "^2.2.7",
+    "typescript": "^4.5.4",
+    "unplugin-vue-components": "^0.22.11",
+    "vite": "^3.0.9",
+    "vite-plugin-components": "^0.13.2",
+    "vite-plugin-crx-mv3": "workspace:*",
+    "vite-plugin-icons": "^0.6.5",
+    "vue-tsc": "^0.40.13"
+  },
+  "license": "ISC"
+}

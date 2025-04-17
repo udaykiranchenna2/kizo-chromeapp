@@ -1,0 +1,37 @@
+{
+  "name": "Kizo",
+  "description": "Kizo is A Chrome extension.",
+  "version": "1.0.0",
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "48": "assets/icons/icon64.png",
+    "128": "assets/icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "../popup.html"
+  },
+  "content_scripts": [{
+    "matches": [ "<all_urls>" ],
+    "js": [ "content-scripts/content.js"]
+  }],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [{
+    "matches": ["<all_urls>"],
+    "resources": ["assets/*"]
+  }],
+  "manifest_version": 3,
+  "host_permissions": [
+    "<all_urls>"
+],
+  "permissions": [
+    "notifications",
+    "webNavigation",
+    "declarativeNetRequest",
+    "tabs",
+    "activeTab",
+    "scripting","storage", "alarms","background",  "cookies","offscreen"
+]
+
+}

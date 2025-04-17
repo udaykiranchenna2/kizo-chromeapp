@@ -1,0 +1,417 @@
+@font-face {
+    font-family: SuisseIntl !important;
+    src: url("https://cdn.honey.io/fonts/suisse-intl/400.eot") !important;
+    src: url("https://cdn.honey.io/fonts/suisse-intl/400.woff2") format("woff2"), url("https://cdn.honey.io/fonts/suisse-intl/400.woff") format("woff"), url("https://cdn.honey.io/fonts/suisse-intl/400.ttf") format("truetype"), url("https://cdn.honey.io/fonts/suisse-intl/400.svg") format("svg") !important;
+    font-weight: 400 !important;
+    font-display: swap
+}
+
+@font-face {
+    font-family: SuisseIntl !important;
+    src: url("https://cdn.honey.io/fonts/suisse-intl/500.eot") !important;
+    src: url("https://cdn.honey.io/fonts/suisse-intl/500.woff2") format("woff2"), url("https://cdn.honey.io/fonts/suisse-intl/500.woff") format("woff"), url("https://cdn.honey.io/fonts/suisse-intl/500.ttf") format("truetype"), url("https://cdn.honey.io/fonts/suisse-intl/500.svg") format("svg") !important;
+    font-weight: 500 !important;
+    font-display: swap
+}
+
+@font-face {
+    font-family: SuisseIntl !important;
+    src: url("https://cdn.honey.io/fonts/suisse-intl/600.eot") !important;
+    src: url("https://cdn.honey.io/fonts/suisse-intl/600.woff2") format("woff2"), url("https://cdn.honey.io/fonts/suisse-intl/600.woff") format("woff"), url("https://cdn.honey.io/fonts/suisse-intl/600.ttf") format("truetype"), url("https://cdn.honey.io/fonts/suisse-intl/600.svg") format("svg") !important;
+    font-weight: 600 !important;
+    font-display: swap
+}
+
+@font-face {
+    font-family: SuisseIntl !important;
+    src: url("https://cdn.honey.io/fonts/suisse-intl/700.eot") !important;
+    src: url("https://cdn.honey.io/fonts/suisse-intl/700.woff2") format("woff2"), url("https://cdn.honey.io/fonts/suisse-intl/700.woff") format("woff"), url("https://cdn.honey.io/fonts/suisse-intl/700.ttf") format("truetype"), url("https://cdn.honey.io/fonts/suisse-intl/700.svg") format("svg") !important;
+    font-weight: 700 !important;
+    font-display: swap
+}
+
+@font-face {
+    font-family: SuisseIntlMono !important;
+    src: url("https://cdn.honey.io/fonts/suisse-intl-mono/regular.eot") !important;
+    src: url("https://cdn.honey.io/fonts/suisse-intl-mono/regular.woff2") format("woff2"), url("https://cdn.honey.io/fonts/suisse-intl-mono/regular.woff") format("woff"), url("https://cdn.honey.io/fonts/suisse-intl-mono/regular.ttf") format("truetype"), url("https://cdn.honey.io/fonts/suisse-intl-mono/regular.svg") format("svg") !important;
+    font-display: swap
+}
+
+@font-face {
+    font-family: Eina03 !important;
+    src: url("https://cdn.honey.io/fonts/eina03/700.eot") !important;
+    src: url("https://cdn.honey.io/fonts/eina03/700.woff2") format("woff2"), url("https://cdn.honey.io/fonts/eina03/700.woff") format("woff"), url("https://cdn.honey.io/fonts/eina03/700.ttf") format("truetype") !important;
+    font-weight: 700 !important;
+    font-display: swap
+}
+
+@font-face {
+    font-family: Pangea !important;
+    src: url("https://cdn.honey.io/fonts/pangea/medium.woff2") format("woff2"), url("https://cdn.honey.io/fonts/pangea/medium.woff") format("woff") !important;
+    font-display: swap
+}
+
+@font-face {
+    font-family: HoneyGoldG !important;
+    font-display: swap !important;
+    src: url("https://cdn.honey.io/fonts/honeygold-g/medium.ttf") format("truetype")
+}
+
+*[id^="honey"] * {
+    font-family: SuisseIntl, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    -webkit-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+    font-weight: 500 !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale
+}
+
+*[id^="honey"] .h0,
+*[id^="honey"] .h1,
+*[id^="honey"] .h2,
+*[id^="honey"] .h3,
+*[id^="honey"] .price6 {
+    font-family: Pangea, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: initial !important;
+    font-variant-numeric: proportional-nums
+}
+
+*[id^="honey"] .h0 {
+    font-size: 50px !important;
+    line-height: 56px !important;
+}
+
+@media(min-width:768px) {
+    *[id^="honey"] .h0 {
+        font-size: 64px !important;
+        line-height: 76px !important;
+    }
+}
+
+*[id^="honey"] .h1 {
+    font-size: 36px !important;
+    line-height: 44px !important;
+}
+
+@media(min-width:768px) {
+    *[id^="honey"] .h1 {
+        font-size: 50px !important;
+        line-height: 56px !important;
+    }
+}
+
+*[id^="honey"] .h2 {
+    font-size: 28px !important;
+    line-height: 36px !important;
+}
+
+@media(min-width:768px) {
+    *[id^="honey"] .h2 {
+        font-size: 36px !important;
+        line-height: 44px !important;
+    }
+}
+
+*[id^="honey"] .h3 {
+    font-size: 28px !important;
+    line-height: 36px !important;
+}
+
+*[id^="honey"] .title0-pangea,
+*[id^="honey"] .title1-pangea,
+*[id^="honey"] .title2-pangea,
+*[id^="honey"] .title3-pangea,
+*[id^="honey"] .title4-pangea,
+*[id^="honey"] .title5-pangea,
+*[id^="honey"] .title6-pangea {
+    font-family: Pangea, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: initia !importantl
+}
+
+*[id^="honey"] .price1,
+*[id^="honey"] .price2,
+*[id^="honey"] .price3,
+*[id^="honey"] .price4,
+*[id^="honey"] .price5,
+*[id^="honey"] .title0,
+*[id^="honey"] .title1,
+*[id^="honey"] .title2,
+*[id^="honey"] .title3,
+*[id^="honey"] .title4,
+*[id^="honey"] .title5,
+*[id^="honey"] .title6,
+*[id^="honey"] .body1,
+*[id^="honey"] .body2,
+*[id^="honey"] .body3,
+*[id^="honey"] .body4,
+*[id^="honey"] .body5,
+*[id^="honey"] .label0,
+*[id^="honey"] .label1,
+*[id^="honey"] .label2,
+*[id^="honey"] .label3,
+*[id^="honey"] .link1,
+*[id^="honey"] .link2,
+*[id^="honey"] .link3 {
+    font-family: SuisseIntl, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+}
+
+*[id^="honey"] .price1 {
+    font-size: 11px !important;
+    font-weight: bold !important;
+    line-height: 12px !important;
+}
+
+*[id^="honey"] .price2 {
+    font-size: 14px !important;
+    font-weight: bold !important;
+    line-height: 16px !important;
+}
+
+*[id^="honey"] .price3 {
+    font-size: 16px !important;
+    font-weight: bold !important;
+    line-height: 20px !important;
+}
+
+*[id^="honey"] .price4 {
+    font-size: 18px !important;
+    font-weight: bold !important;
+    line-height: 24px !important;
+}
+
+*[id^="honey"] .price5 {
+    font-size: 28px !important;
+    font-weight: bold !important;
+    line-height: 36px !important;
+}
+
+*[id^="honey"] .price6 {
+    font-size: 50px !important;
+    letter-spacing: 1px !important;
+    line-height: 56px !important;
+}
+
+*[id^="honey"] .title0,
+*[id^="honey"] .title0-pangea {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    line-height: 16px !important;
+}
+
+*[id^="honey"] .title1,
+*[id^="honey"] .title1-pangea {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    line-height: 16px !important;
+}
+
+*[id^="honey"] .title2,
+*[id^="honey"] .title2-pangea {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    line-height: 20px !important;
+}
+
+*[id^="honey"] .title3,
+*[id^="honey"] .title3-pangea {
+    font-size: 17px !important;
+    font-weight: 600 !important;
+    line-height: 22px !important;
+}
+
+*[id^="honey"] .title4,
+*[id^="honey"] .title4-pangea {
+    font-size: 17px !important;
+    font-weight: 600 !important;
+    line-height: 22px !important;
+}
+
+@media(min-width:768px) {
+
+    *[id^="honey"] .title4,
+    *[id^="honey"] .title4-pangea {
+        font-size: 20px !important;
+        line-height: 24px !important;
+    }
+}
+
+*[id^="honey"] .title5,
+*[id^="honey"] .title5-pangea {
+    font-size: 20px !important;
+    font-weight: 600 !important;
+    line-height: 24px !important;
+}
+
+@media(min-width:768px) {
+
+    *[id^="honey"] .title5,
+    *[id^="honey"] .title5-pangea {
+        font-size: 24px !important;
+        line-height: 28px !important;
+    }
+}
+
+*[id^="honey"] .title6,
+*[id^="honey"] .title6-pangea {
+    font-size: 24px !important;
+    font-weight: 600 !important;
+    line-height: 28px !important;
+}
+
+@media(min-width:768px) {
+
+    *[id^="honey"] .title6,
+    *[id^="honey"] .title6-pangea {
+        font-size: 28px !important;
+        line-height: 36px !important;
+    }
+}
+
+*[id^="honey"] .body1 {
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    line-height: 16px !important;
+}
+
+*[id^="honey"] .body2 {
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    line-height: 16px !important;
+}
+
+*[id^="honey"] .body3 {
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    line-height: 20px !important;
+}
+
+*[id^="honey"] .body4 {
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    line-height: 24px !important;
+}
+
+*[id^="honey"] .body5 {
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    line-height: 24px !important;
+}
+
+@media(min-width:768px) {
+    *[id^="honey"] .body5 {
+        font-size: 20px !important;
+        line-height: 32px !important;
+    }
+}
+
+*[id^="honey"] .label0 {
+    font-size: 10px !important;
+    font-weight: 600
+}
+
+*[id^="honey"] .label1 {
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    line-height: 12px !important;
+}
+
+*[id^="honey"] .label2 {
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 1.1px !important;
+    line-height: 16px !important;
+    text-transform: uppercase
+}
+
+*[id^="honey"] .label3 {
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    line-height: 16px !important;
+}
+
+*[id^="honey"] .link1 {
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    line-height: 16px !important;
+    text-decoration: underline
+}
+
+*[id^="honey"] .link2 {
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    line-height: 16px !important;
+    text-decoration: underline
+}
+
+*[id^="honey"] .link3 {
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    line-height: 20px !important;
+    text-decoration: underline
+}
+
+*[id^="honey"] .mono1,
+*[id^="honey"] .mono2,
+*[id^="honey"] .mono3,
+*[id^="honey"] .mono4,
+*[id^="honey"] .mono5 {
+    font-family: SuisseIntlMono, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+}
+
+*[id^="honey"] .mono1 {
+    font-size: 11px !important;
+    line-height: 16px !important;
+}
+
+*[id^="honey"] .mono2 {
+    font-size: 12px !important;
+    line-height: 16px !important;
+}
+
+*[id^="honey"] .mono3 {
+    font-size: 14px !important;
+    line-height: 20px !important;
+}
+
+*[id^="honey"] .mono4 {
+    font-size: 16px !important;
+    line-height: 24px !important;
+}
+
+*[id^="honey"] .mono5 {
+    font-size: 24px !important;
+    line-height: 32px !important;
+}
+
+*[id^="honey"] .hyperlink {
+    cursor: pointer !important;
+    text-decoration: underline
+}
+
+*[id^="honey"] .hyperlink-blue {
+    color: #3d68fb
+}
+
+*[id^="honey"] .hyperlink-blue:hover {
+    color: #6083fb
+}
+
+*[id^="honey"] .hyperlink-black {
+    color: #212121
+}
+
+*[id^="honey"] .hyperlink-black:hover {
+    color: #424242
+}
+
+*[id^="honey"] .hyperlink-grey {
+    color: #616161
+}
+
+*[id^="honey"] .hyperlink-grey:hover {
+    color: #757575
+}
+
+*[id^="honey"] img[class*="creditPromoImage"] {
+    height: initial
+}
