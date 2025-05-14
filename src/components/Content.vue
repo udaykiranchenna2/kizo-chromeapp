@@ -61,6 +61,7 @@
             <div class="scrollableCard-0-4-148">
               <small v-if="!userLoggedIn" class="text-muted"> {{$t("login_to_activate2.message" )}}</small>
               <div class="main-0-4-175">
+               
                 <div v-if="!userLoggedIn">
                   <a href="https://kizo.co.il/login/" target="_blank" type="button" id="loginBtn"
                     style="margin-bottom:12px" class="btn">
@@ -190,7 +191,6 @@
       </div>
     </div>
 
-
   </div>
 </template>
 <script>
@@ -300,33 +300,57 @@
       const PrintMessage = (code) => {
         if (code != 'store_not_found') {
           return messages.value[code].message;
-
         } else {
           return 'No offers found.';
-
         }
       }
       const BASE_URL = ref('https://kizo.co.il');
-      onMounted(async () => {
-        if (OriginalData.value && OriginalData.value.cashback || OriginalData.value && OriginalData.value
-          .coupon) {
-          await chrome.cookies.get({
-            "url": BASE_URL.value,
-            "name": 'storesVisited',
-          }, function (cookie) {
-
-            if (cookie) {
-              storesVisited.value += cookie.value
-              if (storesVisited.value.includes(OriginalData.value.store.slug)) {
-                activatedOffer.value = true;
-              }
+      
+      // Helper functions for storage operations
+      const getStorageData = async (key, defaultValue = null) => {
+        return new Promise((resolve) => {
+          chrome.storage.local.get(key, (result) => {
+            // Check if the key exists and the data hasn't expired
+            if (result[key] && result[key].expiration && result[key].expiration > Date.now()) {
+              resolve(result[key].data);
+            } else {
+              // If expired or doesn't exist, return default value
+              resolve(defaultValue);
             }
-
           });
-
+        });
+      };
+      
+      const setStorageDataWithExpiration = async (key, data, expiration) => {
+        return new Promise((resolve) => {
+          const storageObject = {
+            [key]: {
+              data: data,
+              expiration: expiration
+            }
+          };
+          
+          chrome.storage.local.set(storageObject, resolve);
+        });
+      };
+      
+      onMounted(async () => {
+        if (OriginalData.value && (OriginalData.value.cashback || OriginalData.value.coupon)) {
+          // Replace cookies with storage API
+          const storesVisitedData = await getStorageData('storesVisited', []);
+          
+          if (storesVisitedData && storesVisitedData.length > 0) {
+            // Convert array to string format similar to the original cookie format
+            storesVisited.value = storesVisitedData.join('|') + '|';
+            
+            if (OriginalData.value.store && 
+                storesVisitedData.includes(OriginalData.value.store.slug)) {
+              activatedOffer.value = true;
+            }
+          }
         }
-
-      })
+      });
+      
       const copyCode = (code) => {
         selectedText.value = code;
         const textarea = document.createElement("textarea");
@@ -339,53 +363,54 @@
         document.execCommand("copy");
         document.body.removeChild(textarea);
       }
+      
       const getDeal = () => {
-        let URL = BASE_URL.value + '/cpn/' + OriginalData.value.store.id + '/' + (userData.value
-          .logged_in == true ? userData.value.details.id : '')
-        alert(URL);
+        let URL = BASE_URL.value + '/cpn/' + OriginalData.value.store.id + '/' + 
+            (userData.value.logged_in == true ? userData.value.details.id : '')
         let a = document.createElement('a');
         a.target = '_blank';
         a.href = URL;
         a.click();
       }
+      
       const activateOfferAndCopycode = (slug, code) => {
-        copyCode(code)
-
+        copyCode(code);
         activateOffer(slug);
       }
-      const activateOffer = (slug) => {
-        chrome.cookies.get({
-          "url": BASE_URL.value,
-          "name": 'storesVisited'
-        }, function (cookie) {
-          let newCookie = '';
-          if (cookie) {
-            newCookie += cookie.value
-          }
-          newCookie = newCookie + slug + '|';
-          chrome.cookies.set({
-            url: BASE_URL.value,
-            name: "storesVisited",
-            value: newCookie,
-            "expirationDate": (new Date().getTime() + 60 * 60 * 1000) / 1000 // 1 hour in seconds
-
-          }, function (cookie) {});
-          activatedOffer.value = true;
-          let URL = BASE_URL.value + '/str/' + OriginalData.value.store.id + '/' + (userData.value
-            .logged_in == true ? userData.value.details.id : '')
-
-          let a = document.createElement('a');
-          a.target = '_blank';
-          a.href = URL;
-          a.click();
-        });
-
+      
+      const activateOffer = async (slug) => {
+        // Get existing stores visited data
+        const storesVisitedData = await getStorageData('storesVisited', []);
+        
+        // Add the new slug if it doesn't exist
+        if (!storesVisitedData.includes(slug)) {
+          storesVisitedData.push(slug);
+        }
+        
+        // Set expiration time to 1 hour from now
+        const expirationTime = Date.now() + (60 * 60 * 1000);
+        
+        // Update storage with new data and expiration
+        await setStorageDataWithExpiration('storesVisited', storesVisitedData, expirationTime);
+        
+        // Update local state
+        storesVisited.value = storesVisitedData.join('|') + '|';
+        activatedOffer.value = true;
+        
+        // Open URL
+        let URL = BASE_URL.value + '/str/' + OriginalData.value.store.id + '/' + 
+            (userData.value.logged_in == true ? userData.value.details.id : '');
+        
+        let a = document.createElement('a');
+        a.target = '_blank';
+        a.href = URL;
+        a.click();
       }
+      
       return {
         OriginalData,
         PrintMessage,
         activateOffer,
-
         messages,
         userLoggedIn,
         loadUser,

@@ -4,11 +4,8 @@ let y;
 let beating = false;
 let isSupported = false;
 chrome.runtime.onInstalled.addListener(async function (details) {
-
-
-
   if (details.reason == "install" || details.reason == "update") {
-    await renderOffscreen(), geturlOnInstalled()
+    await renderOffscreen(), geturlOnInstalled();
   }
   if (details.reason == "install"){
     chrome.tabs.create({'url': `https://kizo.co.il/welcome`}, function(tab) {});
@@ -22,6 +19,7 @@ chrome.runtime.onInstalled.addListener(async function (details) {
     });
   }
 });
+
 chrome.runtime.onConnect.addListener(e => {
   e.name === "set_icon" && e.onMessage.addListener(t => {
     const {
@@ -33,6 +31,8 @@ chrome.runtime.onConnect.addListener(e => {
     }) : addIcon(o)
   })
 });
+
+
 function addIcon({
   data: e
 }) {
@@ -43,6 +43,7 @@ function addIcon({
     imageData: new ImageData(o, 19)
   })
 }
+
 chrome.action.onClicked.addListener(async tab => {
   if (tab && tab.id) {
     chrome.tabs.sendMessage(tab.id, {
@@ -50,6 +51,7 @@ chrome.action.onClicked.addListener(async tab => {
     });
   }
 });
+
 async function renderOffscreen() {
   if (!await chrome.offscreen.hasDocument()) return await chrome.offscreen.createDocument({
     url: chrome.runtime.getURL("offscreen.html"),
@@ -57,12 +59,7 @@ async function renderOffscreen() {
     justification: "need a dom parser."
   })
 }
-// chrome.tabs.onCreated.addListener(function (tab) {
-//   console.log('ddddd');
-//   console.log(tab);
-//   // chrome.browserAction.setBadgeText({ 'text': '' });
-//   getSiteData(tab);
-// });
+
 let onActivatedTimeout = false;
 chrome.tabs.onActivated.addListener(function (activeInfo) {
   if (!onActivatedTimeout) {
@@ -75,7 +72,6 @@ chrome.tabs.onActivated.addListener(function (activeInfo) {
   setTimeout(() => {
     tabUpdated = false;
   }, 2000);
-
 });
 
 function getSiteData(SiteData) {
@@ -88,13 +84,9 @@ function getSiteData(SiteData) {
           chrome.tabs.update(tab.id, {url: BASE_URL+'/explore'});
           }
         initiateAction(y);
-
-      } else {
-        getSiteData();
-      }
+      } 
     });
   }
-
 }
 
 function geturlOnInstalled() {
@@ -111,15 +103,12 @@ function geturlOnInstalled() {
       } else {
         getUrlAndData();
       }
-
     });
   }
 }
 
-
 let tabUpdated = false;
 chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
-  
   if (changeInfo.status === 'loading' && tabUpdated == false) {
     getUrlAndData();
 
@@ -141,18 +130,15 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
               tabUpdated = false;
             }, 1000);
           }
-
         } else {
           getUrlAndData();
         }
-
       });
     }
-
-
   }
   renderOffscreen()
 });
+
 async function getCurrentTab() {
   tab = await chrome.tabs.query({
     active: true,
@@ -165,7 +151,7 @@ async function getCurrentTab() {
   };
 }
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
   switch (request.type) {
     case "POPUP_INIT":
       chrome.runtime.sendMessage({
@@ -178,24 +164,15 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       return true;
       break;
     case "POPUP_ALERT_CLOSE":
-      chrome.cookies.get({
-        "url": BASE_URL,
-        "name": 'ClosedOffers'
-      }, function (cookie) {
-        let newCookie = '';
-        if (cookie) {
-          newCookie += cookie.value
-        }
-        newCookie = newCookie + request.slug + '|';
-        chrome.cookies.set({
-          url: BASE_URL,
-          name: "ClosedOffers",
-          value: newCookie,
-          "expirationDate": (new Date().getTime() + 60 * 60 * 1000) / 1000 // 1 hour in seconds
-        }, function (cookie) {
-
-        });
-
+      // Replace cookies with storage
+      getStorageData('ClosedOffers', []).then(closedOffers => {
+        closedOffers.push(request.slug);
+        
+        // Set expiration time to 1 hour from now
+        const expirationTime = Date.now() + (60 * 60 * 1000);
+        
+        // Store the updated data with expiration
+        setStorageDataWithExpiration('ClosedOffers', closedOffers, expirationTime);
       });
 
       getCurrentTab().then({
@@ -204,57 +181,56 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       return true;
       break;
     case "ACTIVATE_OFFER":
-      let slug = request.slug
-      chrome.cookies.get({
-        "url": BASE_URL,
-        "name": 'storesVisited'
-      }, function (cookie) {
-        let newCookie = '';
-        if (cookie) {
-          newCookie += cookie.value
-        }
-        newCookie = newCookie + slug + '|';
-        chrome.cookies.set({
-          url: BASE_URL,
-          name: "storesVisited",
-          value: newCookie,
-          "expirationDate": (new Date().getTime() + 60 * 60 * 1000) / 1000 // 1 hour in seconds
-        }, function (cookie) {});
-        let URL = BASE_URL + '/str/' + request.id + '/'
-        chrome.tabs.create({
-          url: URL,
-          active: true
+      let slug = request.slug;
+      
+      // Replace cookies with storage
+      getStorageData('storesVisited', []).then(storesVisited => {
+        storesVisited.push(slug);
+        
+        // Set expiration time to 1 hour from now
+        const expirationTime = Date.now() + (60 * 60 * 1000);
+        
+        // Store the updated data with expiration
+        setStorageDataWithExpiration('storesVisited', storesVisited, expirationTime).then(() => {
+          let URL = BASE_URL + '/str/' + request.id + '/';
+          chrome.tabs.create({
+            url: URL,
+            active: true
+          });
         });
       });
+      
       startBeating();
       sendResponse({response: 'response'});
       break;
-      case "CHECK_SUPPORTED":
-        sendResponse({status: isSupported});
+    case "CHECK_SUPPORTED":
+      sendResponse({status: isSupported});
       break;
-      case "Reload-OffScreen":
-        console.log('Rendering offScreen');
-        
-        renderOffscreen()
-        return true;
-        break;
+    case "Reload-OffScreen":
+      console.log('Rendering offScreen');
+      renderOffscreen();
+      return true;
+      break;
+   
     default:
-
   }
 });
 
-// This is the service worker script, which executes in its own context
-// when the extension is installed or refreshed (or when you access its console).
-// It would correspond to the background script in chrome extensions v2.
+function returnLoggedinUser() {
+  return new Promise(resolve => {
+    chrome.storage.local.get('wpUser', ({ wpUser }) => {
+      resolve(wpUser?.data || null)
+    })
+  })
+}
 
 console.log(
   "This prints to the console of the service worker (background script)"
 );
 
 chrome.alarms.onAlarm.addListener(function (alarm) {
-
+  // Handle alarms
 });
-
 
 async function callNotification() {
   chrome.notifications.create({
@@ -266,7 +242,6 @@ async function callNotification() {
     },
     () => {}
   )
-
 }
 
 function startBeating() {
@@ -277,6 +252,7 @@ function startBeating() {
   }, function (c) {});
   beating = true;
 }
+
 function stopBeating() {
   chrome.runtime.sendMessage({
     what: "stopBeatingToK",
@@ -288,6 +264,53 @@ function stopBeating() {
   });
   beating = false;
 }
+
+// Helper functions for storage management
+async function getStorageData(key, defaultValue = null) {
+  return new Promise((resolve) => {
+    chrome.storage.local.get(key, (result) => {
+      // Check if the key exists and the data hasn't expired
+      if (result[key] && result[key].expiration && result[key].expiration > Date.now()) {
+        resolve(result[key].data);
+      } else {
+        // If expired or doesn't exist, return default value
+        resolve(defaultValue);
+      }
+    });
+  });
+}
+
+async function setStorageDataWithExpiration(key, data, expiration) {
+  return new Promise((resolve) => {
+    const storageObject = {
+      [key]: {
+        data: data,
+        expiration: expiration
+      }
+    };
+    
+    chrome.storage.local.set(storageObject, resolve);
+  });
+}
+
+// Remove expired items from storage (can be called periodically)
+async function cleanupExpiredStorage() {
+  chrome.storage.local.get(null, (items) => {
+    const currentTime = Date.now();
+    const keysToRemove = [];
+    
+    for (const [key, value] of Object.entries(items)) {
+      if (value.expiration && value.expiration < currentTime) {
+        keysToRemove.push(key);
+      }
+    }
+    
+    if (keysToRemove.length > 0) {
+      chrome.storage.local.remove(keysToRemove);
+    }
+  });
+}
+
 async function initiateAction(activeInfo) {
   if (!activeInfo)
     return 0;
@@ -296,100 +319,99 @@ async function initiateAction(activeInfo) {
     });
   var url = new URL(activeInfo);
   var hostname = url.hostname;
+  
   fetch(BASE_URL + `wp-json/cmd/v1/getStoreByDomain/?domain=${hostname}&product=${hostname}/in/en/`, {
-      method: 'GET',
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-      },
-    })
-    .then(response => response.json())
-    .then(response => {
-      offers = response;
-      if (offers.code == 'success') {
-        isSupported = true;
-        check(true);
-        let Cashbackcookied = false;
-        function check(flag) {
-          chrome.tabs.query({
-            active: true,
-            currentWindow: true
-          }, async function (tabs) {
-            let cookied = false;
-
-            if (tabs[0]) {
-              await chrome.cookies.get({
-                "url": BASE_URL,
-                "name": 'storesVisited'
-              }, async function (cookie) {
-                if (cookie && offers.store) {
-                  if (cookie.value.includes(offers.store.slug)) {
-                    Cashbackcookied = true;
-                  }
-                }
-                await chrome.cookies.get({
-                  "url": BASE_URL,
-                  "name": 'ClosedOffers'
-                }, function (cookie) {
-                  if (cookie && offers.store) {
-                    if (cookie.value.includes(offers.store.slug)) {
-                      cookied = true;
-                    } else {
-                      cookied = false;
-                    }
-                  } else {
-                    cookied = false;
-                  }
-                  chrome.tabs.sendMessage(tabs[0].id, {
-                    type: "openPopup",
-                    data: offers,
-                    cookied: cookied,
-                    Cashbackcookied: Cashbackcookied,
-                    isSupported:isSupported,
-                  }, function (response) {
-                    if (chrome.runtime.lastError) {
-                      check(false);
-                    } else {}
-                  });
-                  if (offers.coupons != null && offers.coupons.length > 0) {
-                    let badgeNo = offers.coupons.length.toString();
-                    if (!Cashbackcookied && !beating && flag) {
-                      startBeating();
-                    }else if(Cashbackcookied && beating && flag){
-                      stopBeating()
-                    }
-
-                    chrome.action.setBadgeText({
-                      text: badgeNo
-                    });
-                  } else if (offers.cashback && offers.cashback.status) {
-                    chrome.action.setBadgeText({
-                      text: '$'
-                    });
-                    if (!Cashbackcookied && !beating && flag) {
-                      startBeating();
-                    }else if(Cashbackcookied && beating && flag){
-                      stopBeating()
-                    }
-                  }
-                });
-
-              });
-            }
-
-          });
-
-        }
-
-      } else {
-        isSupported = false;
-        if (offers.coupons != "store_not_found" && beating) {
-          stopBeating();
-        }
-      }
-    }).catch(error=>{
-      console.log('error at initiateAction');
-      console.log(error);
+    method: 'GET',
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+    },
+  })
+  .then(response => response.json())
+  .then(response => {
+    offers = response;
+    if (offers.code == 'success') {
+      isSupported = true;
+      check(true);
       
-    })
+      async function check(flag) {
+        chrome.tabs.query({
+          active: true,
+          currentWindow: true
+        }, async function (tabs) {
+          if (tabs[0]) {
+            // Get storesVisited data from storage
+            let Cashbackcookied = false;
+            let cookied = false;
+            
+            const storesVisited = await getStorageData('storesVisited', []);
+            if (storesVisited.length > 0 && offers.store) {
+              if (storesVisited.includes(offers.store.slug)) {
+                Cashbackcookied = true;
+              }
+            }
+            
+            // Get ClosedOffers data from storage
+            const closedOffers = await getStorageData('ClosedOffers', []);
+            if (closedOffers.length > 0 && offers.store) {
+              if (closedOffers.includes(offers.store.slug)) {
+                cookied = true;
+              }
+            }
+            
+            chrome.tabs.sendMessage(tabs[0].id, {
+              type: "openPopup",
+              data: offers,
+              cookied: cookied,
+              Cashbackcookied: Cashbackcookied,
+              isSupported: isSupported,
+            }, function (response) {
+              if (chrome.runtime.lastError) {
+                check(false);
+              }
+            });
+            
+            if (offers.coupons != null && offers.coupons.length > 0) {
+              let badgeNo = offers.coupons.length.toString();
+              if (!Cashbackcookied && !beating && flag) {
+                startBeating();
+              } else if (Cashbackcookied && beating && flag) {
+                stopBeating();
+              }
+
+              chrome.action.setBadgeText({
+                text: badgeNo
+              });
+            } else if (offers.cashback && offers.cashback.status) {
+              chrome.action.setBadgeText({
+                text: '$'
+              });
+              if (!Cashbackcookied && !beating && flag) {
+                startBeating();
+              } else if (Cashbackcookied && beating && flag) {
+                stopBeating();
+              }
+            }
+          }
+        });
+      }
+    } else {
+      isSupported = false;
+      if (offers.coupons != "store_not_found" && beating) {
+        stopBeating();
+      }
+    }
+  }).catch(error => {
+    console.log('error at initiateAction');
+    console.log(error);
+  });
 }
+
+// Cleanup expired storage items periodically
+chrome.alarms.create('cleanupStorage', { periodInMinutes: 60 });
+chrome.alarms.onAlarm.addListener((alarm) => {
+  if (alarm.name === 'cleanupStorage') {
+    cleanupExpiredStorage();
+  }
+});
+
