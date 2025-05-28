@@ -42,7 +42,7 @@
 
       <div style="z-index: 2147483647 !important; display: block !important;">
         <div id="honey">
-          <link rel="stylesheet" type="text/css" href="../assets/kizo-sidebar.css">
+          <!-- <link rel="stylesheet" type="text/css" href="../assets/kizo-sidebar.css"> -->
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
             integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
             crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -253,29 +253,74 @@
                               </div>
                             </div>
                           </div>
-                          <div v-if="odata &&odata.coupons&& dealCount>0" class="layout-0-4-145 layout-d1-0-4-197">
-                            <div>
-                              <div class="c-root-0-4-214">
-                                <div class="container-0-4-199">
-                                  <div class="productListContainer-0-4-201">
-                                    <div class="productListContent-0-4-202 " role="row">
-                                      <a target="_blank" :href="deal.details" v-for="(deal,index) in deals" :key="index"
-                                        role="link" :aria-label="deal.title" tabindex="0" :title="deal.title"
-                                        class="button-2-855 productCard-0-4-203">
-                                        <div class="product-0-4-211">
-                                          <div><img aria-hidden="true" :src="deal.image_url" :alt="deal.title"
-                                              class="productImage-0-4-204"></div>
-                                          <div class="discount-0-4-212 title0">{{deal.badge}} off
+                        <!-- Replace your existing deals section with this improved version -->
+                        <div v-if="odata &&odata.coupons&& dealCount>0" class="layout-0-4-145 layout-d1-0-4-197">
+                          <div>
+                            <div class="c-root-0-4-214">
+                              <div class="container-0-4-199">
+                                <!-- Header section with improved styling -->
+                                <!-- <div class="noGraphMain-0-4-227" v-if="odata.coupons && odata.coupons.length">
+                                  <div class="textContent-0-4-233">
+                                    <div class="noGraphSubtitle-0-4-231 title3">
+                                      <strong v-if="odata.coupons && odata.coupons.length && odata.cashback && odata.cashback.status > 0">
+                                        <img alt="Sale Alert Icon" src="../assets/svg/fire-fill-mini.svg" class="fireIcon-0-4-198">
+                                        {{ $t('offers_message.message', { COUNT: odata.coupons.length}) }}
+                                        <span v-html="odata.cashback.message"></span>
+                                      </strong>
+                                      <strong v-else-if="odata.coupons && odata.coupons.length">
+                                        נמצאו {{ odata.coupons.length }} הצעות מיוחדות!
+                                      </strong>
+                                    </div>
+                                  </div>
+                                </div>
+                                 -->
+                                <!-- 3x3 Grid with scrolling -->
+                                <div class="productListContainer-0-4-201">
+                                  <div class="productListContent-0-4-202" role="grid">
+                                    <a 
+                                      v-for="(deal, index) in deals" 
+                                      :key="`deal-${index}`"
+                                      target="_blank" 
+                                      :href="deal.details" 
+                                      role="gridcell" 
+                                      :aria-label="`Deal: ${deal.title}`" 
+                                      tabindex="0" 
+                                      :title="deal.title"
+                                      class="productCard-0-4-203"
+                                      @keydown.enter="$event.target.click()"
+                                    >
+                                      <div class="product-0-4-211">
+                                        <div>
+                                          <img 
+                                            v-if="deal.image_url && deal.image_url.length > 0" 
+                                            :src="deal.image_url" 
+                                            :alt="deal.title"
+                                            class="productImage-0-4-204_changed"
+                                            loading="lazy"
+                                            @error="handleImageError"
+                                          >
+                                          <div v-else class="productImage-0-4-204 placeholder-image clamp-3">
+                                            {{ deal.title }}
                                           </div>
                                         </div>
-                                      </a>
-                                    </div>
+                                        <div 
+                                          class="discount-0-4-212"
+                                          :class="{
+                                            'deal-badge': !deal.badge || deal.badge.toLowerCase().includes('deal'),
+                                            'sale-badge': deal.badge && deal.badge.toLowerCase().includes('off'),
+                                            'limited-badge': deal.badge && deal.badge.toLowerCase().includes('limited')
+                                          }"
+                                        >
+                                          {{ deal.badge && deal.badge.length > 0 ? deal.badge : 'Deal' }}
+                                        </div>
+                                      </div>
+                                    </a>
                                   </div>
                                 </div>
                               </div>
                             </div>
-
                           </div>
+                        </div>
                         </div>
                       </div>
                     </div>
@@ -293,7 +338,7 @@
 
       <div style="z-index: 2147483647 !important; display: block !important;">
         <div id="honey">
-          <link rel="stylesheet" href="../assets/kizo-sidebar.css">
+          <!-- <link rel="stylesheet" href="../assets/kizo-sidebar.css"> -->
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
             integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
             crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -523,10 +568,29 @@
                                           :key="index" role="link" :aria-label="deal.title" tabindex="0"
                                           :title="deal.title" class="button-2-855 productCard-0-4-203">
                                           <div class="product-0-4-211">
-                                            <div><img aria-hidden="true" :src="deal.image_url" :alt="deal.title"
-                                                class="productImage-0-4-204"></div>
-                                            <div class="discount-0-4-212 title0">{{deal.badge}} off
-                                            </div>
+                                            <div class="p-0">
+                                              <img 
+                                            v-if="deal.image_url && deal.image_url.length > 0" 
+                                            :src="deal.image_url" 
+                                            :alt="deal.title"
+                                            class="productImage-0-4-204_changed"
+                                            loading="lazy"
+                                            @error="handleImageError"
+                                          >
+                                          <div v-else class="productImage-0-4-204 placeholder-image clamp-3">
+                                              {{ deal.title }}
+                                          </div>
+                                        </div>
+                                        <div 
+                                          class="discount-0-4-212"
+                                          :class="{
+                                            'deal-badge': !deal.badge || deal.badge.toLowerCase().includes('deal'),
+                                            'sale-badge': deal.badge && deal.badge.toLowerCase().includes('off'),
+                                            'limited-badge': deal.badge && deal.badge.toLowerCase().includes('limited')
+                                          }"
+                                        >
+                                          {{ deal.badge && deal.badge.length > 0 ? deal.badge : 'Deal' }}
+                                        </div>
                                           </div>
                                         </a>
 
@@ -1468,7 +1532,7 @@
   }
 
   .productListContent-0-4-202 *:not(:last-child) {
-    margin-right: 8px;
+    /* margin-right: 8px; */
   }
 
   .productCard-0-4-203 {
@@ -1502,7 +1566,7 @@
   }
 
   .productListContent-0-4-202 *:not(:last-child) {
-    margin-right: 8px;
+    /* margin-right: 8px; */
   }
 
   .productCard-0-4-203 {
@@ -1982,4 +2046,277 @@
     padding: 0;
     border-bottom: 1px solid #cccccc;
   }
+
+  Latests Css
+  /* Replace the existing deals-related CSS with this improved version */
+
+/* Main deals container */
+.c-root-0-4-214 {
+  overflow: hidden;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.container-0-4-199 {
+  padding: 20px;
+}
+
+/* Deals grid container */
+.productListContainer-0-4-201 {
+  margin: 16px 0;
+  max-height: 280px; /* Height for 3 rows of ~90px each + gaps */
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 8px;
+  background: #fafbfc;
+  padding: 12px;
+  position: relative;
+}
+
+/* Custom scrollbar styling */
+.productListContainer-0-4-201::-webkit-scrollbar {
+  width: 6px;
+}
+
+.productListContainer-0-4-201::-webkit-scrollbar-track {
+  background: #f1f3f4;
+  border-radius: 3px;
+}
+
+.productListContainer-0-4-201::-webkit-scrollbar-thumb {
+  background: #46B29D;
+  border-radius: 3px;
+  transition: background 0.3s ease;
+}
+
+.productListContainer-0-4-201::-webkit-scrollbar-thumb:hover {
+  background: #2E8B77;
+}
+
+/* 3x3 Grid layout */
+.productListContent-0-4-202 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  width: 100%;
+  padding: 4px;
+}
+
+/* Individual deal card */
+.productCard-0-4-203 {
+  width: 100%;
+  height: 85px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  background: transparent;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.productCard-0-4-203:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(70, 178, 157, 0.15);
+}
+
+.productCard-0-4-203:active {
+  transform: translateY(0);
+}
+
+/* Deal product container */
+.product-0-4-211 {
+  width: 100%;
+  height: 100%;
+  border: 2px solid #e8eaed;
+  display: flex;
+  transition: all 0.3s ease;
+  align-items: center;
+  border-radius: 8px;
+  flex-direction: column;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.productCard-0-4-203:hover .product-0-4-211 {
+  border-color: #46B29D;
+  box-shadow: 0 0 0 1px rgba(70, 178, 157, 0.2);
+}
+
+/* Product image container */
+.product-0-4-211 > div:first-child {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Product image */
+.productImage-0-4-204 {
+  width: auto;
+  height: auto;
+  /* max-width: 45px; */
+  min-width: 30px;
+  /* max-height: 45px; */
+  min-height: 30px;
+  object-fit: contain;
+  border-radius: 4px;
+  transition: transform 0.3s ease;
+}
+
+.productCard-0-4-203:hover .productImage-0-4-204 {
+  transform: scale(1.05);
+}
+
+/* Discount badge */
+.discount-0-4-212 {
+  color: #ffffff;
+  width: 100%;
+  height: 22px;
+  display: flex;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+  align-items: center;
+  border-radius: 0 0 6px 6px;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.discount-0-4-212::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.productCard-0-4-203:hover .discount-0-4-212::before {
+  left: 100%;
+}
+
+/* Deal badge variations */
+.discount-0-4-212.deal-badge {
+  background: linear-gradient(135deg, #46B29D 0%, #2E8B77 100%);
+}
+
+.discount-0-4-212.sale-badge {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+}
+
+.discount-0-4-212.limited-badge {
+  background: linear-gradient(135deg, #ffa726 0%, #fb8c00 100%);
+}
+
+/* Loading state for images */
+.productImage-0-4-204[src=""] {
+  background: linear-gradient(45deg, #f0f0f0 25%, transparent 25%, transparent 75%, #f0f0f0 75%);
+  background-size: 20px 20px;
+  animation: loading-shimmer 1s infinite linear;
+}
+
+@keyframes loading-shimmer {
+  0% { background-position: 0 0; }
+  100% { background-position: 20px 20px; }
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 400px) {
+  .productListContent-0-4-202 {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  
+  .productCard-0-4-203 {
+    height: 75px;
+  }
+  
+  .productImage-0-4-204 {
+    max-width: 35px;
+    max-height: 35px;
+  }
+  
+  .discount-0-4-212 {
+    font-size: 9px;
+    height: 20px;
+  }
+}
+
+/* Fade in animation for deals */
+.productCard-0-4-203 {
+  opacity: 0;
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.productCard-0-4-203:nth-child(1) { animation-delay: 0.1s; }
+.productCard-0-4-203:nth-child(2) { animation-delay: 0.2s; }
+.productCard-0-4-203:nth-child(3) { animation-delay: 0.3s; }
+.productCard-0-4-203:nth-child(4) { animation-delay: 0.4s; }
+.productCard-0-4-203:nth-child(5) { animation-delay: 0.5s; }
+.productCard-0-4-203:nth-child(6) { animation-delay: 0.6s; }
+.productCard-0-4-203:nth-child(7) { animation-delay: 0.7s; }
+.productCard-0-4-203:nth-child(8) { animation-delay: 0.8s; }
+.productCard-0-4-203:nth-child(9) { animation-delay: 0.9s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll indicator */
+.productListContainer-0-4-201::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: linear-gradient(to top, rgba(250, 251, 252, 0.9), transparent);
+  pointer-events: none;
+  border-radius: 0 0 8px 8px;
+}
+
+/* Header improvements */
+.fireIcon-0-4-198 {
+  width: 18px;
+  height: 18px;
+  filter: invert(34%) sepia(91%) saturate(1916%) hue-rotate(336deg) brightness(122%) contrast(102%);
+  vertical-align: text-bottom;
+  margin-left: 4px;
+  animation: flicker 1.5s infinite alternate;
+}
+
+@keyframes flicker {
+  0%, 100% { filter: invert(34%) sepia(91%) saturate(1916%) hue-rotate(336deg) brightness(122%) contrast(102%); }
+  50% { filter: invert(34%) sepia(91%) saturate(1916%) hue-rotate(336deg) brightness(150%) contrast(120%); }
+}
+.content-0-4-31{
+  overflow: hidden;
+}
+.clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 </style>

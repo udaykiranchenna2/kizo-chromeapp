@@ -1189,7 +1189,7 @@
   }
 
   .productListContent-0-4-202 *:not(:last-child) {
-    margin-right: 8px;
+    /* margin-right: 8px; */
   }
 
   .productCard-0-4-203 {
@@ -1223,7 +1223,7 @@
   }
 
   .productListContent-0-4-202 *:not(:last-child) {
-    margin-right: 8px;
+    /* margin-right: 8px; */
   }
 
   .productCard-0-4-203 {
